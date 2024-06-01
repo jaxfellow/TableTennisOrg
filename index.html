@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Tennis Organizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Table Tennis Organizer</h1>
+        <form id="playerForm">
+            <label for="playerName">Player Name:</label>
+            <input type="text" id="playerName" required>
+            <label for="playerLevel">Player Level:</label>
+            <select id="playerLevel" required>
+                <option value="A">A (Professional)</option>
+                <option value="B">B (Medium)</option>
+                <option value="C">C (Beginner)</option>
+            </select>
+            <button type="submit">Add Player</button>
+        </form>
+        <button id="togglePlayerList">Toggle Player List</button>
+        <button id="generateTeams">Generate Teams</button>
+        <button id="generateTournament">Generate Tournament</button>
+        <div id="playerList" class="collapsible"></div>
+        <div id="teams"></div>
+        <div id="tournament"></div>
+    </div>
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="editPlayerForm">
+                <label for="editPlayerName">Player Name:</label>
+                <input type="text" id="editPlayerName" required>
+                <label for="editPlayerLevel">Player Level:</label>
+                <select id="editPlayerLevel" required>
+                    <option value="A">A (Professional)</option>
+                    <option value="B">B (Medium)</option>
+                    <option value="C">C (Beginner)</option>
+                </select>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
