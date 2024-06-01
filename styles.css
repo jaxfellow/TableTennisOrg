@@ -104,7 +104,7 @@ button.edit, button.delete {
     overflow-y: auto;
 }
 
-.match button {
+button {
     padding: 10px 20px;
     margin: 5px;
     border: none;
@@ -115,18 +115,17 @@ button.edit, button.delete {
     transition: background-color 0.3s ease;
 }
 
-.match button:hover {
+button:hover {
     background-color: #4CAF50; /* Green */
     color: white;
 }
 
-.match button.red {
+button.red {
     background-color: #f44336; /* Red */
     color: white;
 }
 
-.match button.green {
+button.green {
     background-color: #4CAF50; /* Green */
     color: white;
 }
-
