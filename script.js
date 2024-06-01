@@ -74,7 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     team2 = numTeams - 1;
                 }
 
+                if (team1 !== team2) {
                 schedule.push({ team1: `Team ${team1 + 1}`, team2: `Team ${team2 + 1}` });
+                }
             }
         }
 
