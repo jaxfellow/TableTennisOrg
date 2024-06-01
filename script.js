@@ -161,6 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
         displayTournament(tournament);
     });
 
+    window.editPlayer = editPlayer;
+    window.deletePlayer = deletePlayer;
+
     function displayTeams(teams) {
         teamsDiv.innerHTML = '';
         teams.forEach((team, index) => {
