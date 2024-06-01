@@ -217,18 +217,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
             // Function to handle click on team1 button
             team1Button.addEventListener('click', () => {
-                team1Button.classList.add('green');
-                team2Button.classList.add('red');
-                team1Button.disabled = true;
-                team2Button.disabled = true;
+                toggleButtonColor(team1Button, team2Button);
             });
     
             // Function to handle click on team2 button
             team2Button.addEventListener('click', () => {
-                team1Button.classList.add('red');
-                team2Button.classList.add('green');
-                team1Button.disabled = true;
-                team2Button.disabled = true;
+                toggleButtonColor(team2Button, team1Button);
             });
     
             matchDiv.appendChild(team1Button);
@@ -237,8 +231,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    
-        
+    function toggleButtonColor(selectedButton, otherButton) {
+        if (selectedButton.classList.contains('green')) {
+            selectedButton.classList.remove('green');
+            otherButton.classList.remove('red');
+        } else {
+            selectedButton.classList.add('green');
+            otherButton.classList.add('red');
+        }
+    }
 
     // Initial display of players on page load
     displayPlayers();
