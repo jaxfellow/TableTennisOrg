@@ -83,6 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return schedule;
     }
 
+    function updateWinner(matchIndex, team1, team2, winner) {
+        const matchDiv = document.getElementById(`match${matchIndex}`);
+        matchDiv.textContent = `Match ${matchIndex + 1}: ${winner} wins`;
+        console.log(`Match ${matchIndex + 1}: ${winner} wins`);
+        // Here you can save the winner to storage or perform any other action you need
+    }    
+
     function editPlayer(index) {
         const player = players[index];
         editPlayerNameInput.value = player.name;
@@ -141,6 +148,28 @@ document.addEventListener('DOMContentLoaded', () => {
         editModal.style.display = 'none';
     }
 
+    playerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const playerName = playerNameInput.value.trim();
+        const playerLevel = playerLevelSelect.value;
+        if (playerName && playerLevel) {
+            const playerExists = players.some(player => player.name.toLowerCase() === playerName.toLowerCase());
+            if (playerExists) {
+                alert('Player with this name already exists.');
+                return;
+            }
+            if (editIndex !== null) {
+                players[editIndex] = { name: playerName, level: playerLevel };
+                editIndex = null;
+            } else {
+                players.push({ name: playerName, level: playerLevel });
+            }
+            savePlayersToLocalStorage();
+            displayPlayers();
+            playerForm.reset();
+        }
+    });    
+
     generateTeamsButton.addEventListener('click', () => {
         if (players.length < 4 || players.length % 2 !== 0) {
             alert('An even number of at least 4 players is required to form teams.');
@@ -179,10 +208,37 @@ document.addEventListener('DOMContentLoaded', () => {
         schedule.forEach((match, index) => {
             const matchDiv = document.createElement('div');
             matchDiv.className = 'match';
-            matchDiv.textContent = `Match ${index + 1}: ${match.team1} vs ${match.team2}`;
+            const team1Button = document.createElement('button');
+            team1Button.textContent = match.team1;
+            team1Button.className = 'team-button';
+            const team2Button = document.createElement('button');
+            team2Button.textContent = match.team2;
+            team2Button.className = 'team-button';
+    
+            // Function to handle click on team1 button
+            team1Button.addEventListener('click', () => {
+                team1Button.classList.add('green');
+                team2Button.classList.add('red');
+                team1Button.disabled = true;
+                team2Button.disabled = true;
+            });
+    
+            // Function to handle click on team2 button
+            team2Button.addEventListener('click', () => {
+                team1Button.classList.add('red');
+                team2Button.classList.add('green');
+                team1Button.disabled = true;
+                team2Button.disabled = true;
+            });
+    
+            matchDiv.appendChild(team1Button);
+            matchDiv.appendChild(team2Button);
             tournamentDiv.appendChild(matchDiv);
         });
     }
+    
+    
+        
 
     // Initial display of players on page load
     displayPlayers();

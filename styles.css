@@ -83,6 +83,7 @@ button.edit, button.delete {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    max-width: 500px;
 }
 
 .close {
@@ -102,3 +103,30 @@ button.edit, button.delete {
     max-height: 200px; /* Adjust the height as needed */
     overflow-y: auto;
 }
+
+.match button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.match button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.match button.red {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.match button.green {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
